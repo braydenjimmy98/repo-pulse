@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repo Pulse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<button id="theme" class="glass pill toggle" type="button">Invert</button>
+<div id="bar" class="bar"></div>
+
+<main>
+  <header class="hero">
+    <h1>REPO PULSE</h1>
+    <p class="tag">The vital signs of any repository</p>
+    <form id="form" class="glass pill search">
+      <input id="q" placeholder="owner/repo or a GitHub link" autocomplete="off" required aria-label="Repository">
+      <button type="submit">Analyze</button>
+    </form>
+    <div id="recent" class="chips"></div>
+  </header>
+
+  <div id="error" class="glass error" hidden></div>
+
+  <section id="out" hidden>
+    <div class="glass card summary">
+      <h2 id="name"></h2>
+      <p id="desc" class="desc"></p>
+      <div class="stats" id="stats"></div>
+    </div>
+
+    <div class="glass card gauge-card">
+      <svg viewBox="0 0 120 120" class="gauge" aria-hidden="true">
+        <circle cx="60" cy="60" r="52" class="track"/>
+        <circle id="arc" cx="60" cy="60" r="52" class="arc"/>
+      </svg>
+      <div class="gauge-num"><span id="score">0</span><small>/ 100</small></div>
+      <div>
+        <h3>Health score</h3>
+        <ul id="why" class="why"></ul>
+      </div>
+    </div>
+
+    <div class="glass card wide"><h3>Commits per week</h3><div class="cv"><canvas id="c-commits"></canvas></div><p id="commit-note" class="note"></p></div>
+    <div class="glass card"><h3>Issues</h3><div class="cv sm"><canvas id="c-issues"></canvas></div><p id="issue-note" class="note"></p></div>
+    <div class="glass card"><h3>Languages</h3><div class="cv sm"><canvas id="c-langs"></canvas></div></div>
+    <div class="glass card wide"><h3>Top contributors</h3><ol id="people" class="people"></ol></div>
+  </section>
+</main>
+
+<footer>Data from the public GitHub API</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
